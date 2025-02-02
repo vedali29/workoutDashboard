@@ -1,0 +1,30 @@
+<form [formGroup]="workoutForm" (ngSubmit)="onSubmit()" class="bg-white p-6 rounded-lg shadow-md mb-6 flex flex-col md:flex-row gap-4">
+  <div class="w-full">
+    <mat-form-field class="w-full">
+      <mat-label>Name</mat-label>
+      <input matInput formControlName="name" placeholder="Enter name" class="w-full">
+    </mat-form-field>
+  </div>
+
+  <div class="w-full">
+    <mat-form-field class="w-full">
+      <mat-label>Workout Type</mat-label>
+      <mat-select formControlName="type" class="w-full">
+        <mat-option *ngFor="let type of workoutTypes" [value]="type">
+          {{type}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+
+  <div class="w-full">
+    <mat-form-field class="w-full">
+      <mat-label>Minutes</mat-label>
+      <input matInput type="number" formControlName="minutes" placeholder="Enter minutes" class="w-full">
+    </mat-form-field>
+  </div>
+
+  <button mat-raised-button color="primary" type="submit" [disabled]="!workoutForm.valid" class="w-full md:w-1/3 h-12 text-lg justify-center flex items-center">
+    Add Workout
+  </button>
+</form>
